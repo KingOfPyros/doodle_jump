@@ -5,7 +5,7 @@
 
 int main()
 {
-	Window * window = new Window(600,900, "Doodle jump");
+	Window * window = new Window(500,800, "Doodle jump");
 	window->show();
 
 	delete window;

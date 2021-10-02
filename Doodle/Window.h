@@ -6,11 +6,12 @@ class Window : public sf::RenderWindow
 {
 	std::string name;
 	sf::Texture texture;
-	sf::Image image;
 public:
-	Window(int width, int heigth, std::string name)  : sf::RenderWindow(sf::VideoMode(width, heigth), name)
+	Window(int width, int heigth, std::string name) : sf::RenderWindow(sf::VideoMode(width, heigth), name)
 	{
-
+		if (!texture.loadFromFile("background.png")) {
+			throw;
+		}
 	}
 
 	void show() {
@@ -23,15 +24,14 @@ public:
 					this->close();
 				}
 			}
-		}
 
-		texture.setRepeated(true);
-		texture.loadFromFile("background.png", sf::IntRect(600, 900, 0, 0));
-		sf::Sprite sprite(texture);
-		this->draw(sprite);
+
+			this->clear(sf::Color::Red);
+			texture.setRepeated(true);
+			texture.loadFromFile("background.png");
+			sf::Sprite sprite(texture);
+			this->draw(sprite);
 			this->display();
+		}
 	}
-
-	~Window() {}
 };
-
