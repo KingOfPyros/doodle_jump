@@ -24,6 +24,7 @@ public:
 				}
 			}
 		}
+
 		texture.setRepeated(true);
 		texture.loadFromFile("background.png", sf::IntRect(600, 900, 0, 0));
 		sf::Sprite sprite(texture);
