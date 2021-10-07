@@ -2,13 +2,14 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Hero_dumb.h"
-
+#include "Platform.h"
 
 class Window : public sf::RenderWindow
 {
 	std::string name;
 	sf::Texture texture;
 	Hero_dumb* player;
+	Platform* plat;
 public:
 	Window(int width, int heigth, std::string name) : sf::RenderWindow(sf::VideoMode(width, heigth), name)
 	{
@@ -16,6 +17,7 @@ public:
 			throw;
 		}
 		this->player = new Hero_dumb(200, 600);
+		this->plat = new Platform(100, 100);
 	}
 
 	void show() {
@@ -36,6 +38,7 @@ public:
 			sf::Sprite sprite(texture);
 			this->draw(sprite);
 			this->draw(this->player->getSprite());
+			this->draw(this->plat->show());
 			this->display();
 		}
 	}
